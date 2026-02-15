@@ -6,7 +6,7 @@ const services = [
   {
     title: "補助金検索",
     description:
-      "AIが最適な補助金をレコメンド。キーワード・地域・業種から瞬時に検索し、申請要件を自動チェック。",
+      "キーワード・地域・業種から瞬時に検索。受付状況やステータスでフィルタリングして最適な制度を見つけられます。",
     href: "/search",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -20,7 +20,7 @@ const services = [
   {
     title: "トレンド分析",
     description:
-      "補助金の採択率・予算推移をグラフで可視化。地域別ヒートマップで全国の動向を一目で把握。",
+      "補助金の件数推移・総額をグラフで可視化。地域別・産業別の分布で全国の動向を一目で把握。",
     href: "/analytics",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -31,15 +31,13 @@ const services = [
     glowColor: "rgba(59, 130, 246, 0.35)",
   },
   {
-    title: "API アクセス",
+    title: "オープンソース",
     description:
-      "RESTful APIで補助金データにプログラマティックアクセス。自社システムとの連携やカスタム分析に。",
-    href: "#api",
+      "コード全公開。誰でも自由に利用・改善できます。データソースはjGrants公開APIを使用。",
+    href: "https://github.com/kokoaru-ltd/subsidy-scope",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 18l6-6-6-6" />
-        <path d="M8 6l-6 6 6 6" />
-        <path d="M14.5 4l-5 16" />
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
       </svg>
     ),
     glowColor: "rgba(168, 85, 247, 0.35)",
@@ -48,22 +46,22 @@ const services = [
 
 export function ServiceGrid() {
   return (
-    <section className="py-24" id="api">
+    <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
-              3つのプロダクト
+              すべて無料で使える
             </h2>
             <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
-              補助金情報の検索からトレンド分析、システム連携まで。
-              必要な機能をすべてカバーします。
+              補助金情報の検索からトレンド分析まで。
+              オープンソースで完全無料。
             </p>
           </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {services.map((service, i) => (
+          {services.map((service) => (
             <ScrollReveal key={service.title}>
               <a href={service.href} className="block h-full">
                 <GlowCard glowColor={service.glowColor} className="h-full">
