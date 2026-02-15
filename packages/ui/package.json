@@ -1,0 +1,25 @@
+{
+  "name": "@subsidy-scope/ui",
+  "version": "0.1.0",
+  "description": "SubsidyScope 共有デザインシステム — テーマ・コンポーネント・アニメーション",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.tsx",
+    "./theme.css": "./src/theme.css"
+  },
+  "dependencies": {
+    "react": "catalog:",
+    "motion": "^11.15.0",
+    "lenis": "^1.1.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "typescript": "catalog:"
+  }
+}

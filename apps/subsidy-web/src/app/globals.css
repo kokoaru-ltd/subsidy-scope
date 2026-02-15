@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "@subsidy-scope/ui/theme.css";
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}

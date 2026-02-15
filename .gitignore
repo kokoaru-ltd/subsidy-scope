@@ -1,0 +1,10 @@
+node_modules/
+.next/
+dist/
+.turbo/
+.vercel/
+.env
+.env.local
+*.tsbuildinfo
+data/
+packages/db/prisma/generated/

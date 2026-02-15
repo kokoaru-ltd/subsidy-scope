@@ -1,0 +1,39 @@
+:root {
+	/* ─── Base palette ─── */
+	--bg-primary: #0a0e17;
+	--bg-secondary: #0f1520;
+	--bg-tertiary: #141c2b;
+	--bg-card: rgba(15, 21, 32, 0.8);
+
+	/* ─── Accent (teal/green — money/growth) ─── */
+	--accent: #00d4aa;
+	--accent-dim: #00a888;
+	--accent-glow: rgba(0, 212, 170, 0.35);
+	--accent-subtle: rgba(0, 212, 170, 0.1);
+
+	/* ─── Text ─── */
+	--text-primary: #f0f4f8;
+	--text-secondary: #8b95a5;
+	--text-dim: #5a6474;
+	--text-ghost: #3a4454;
+
+	/* ─── Borders ─── */
+	--border: rgba(255, 255, 255, 0.06);
+	--border-hover: rgba(255, 255, 255, 0.12);
+	--border-accent: rgba(0, 212, 170, 0.3);
+
+	/* ─── Glass ─── */
+	--glass-bg: rgba(255, 255, 255, 0.05);
+	--glass-border: rgba(255, 255, 255, 0.08);
+	--glass-blur: 12px;
+
+	/* ─── Status colors ─── */
+	--status-active: #00d4aa;
+	--status-upcoming: #fbbf24;
+	--status-closed: #ef4444;
+	--status-archived: #6b7280;
+
+	/* ─── Shadows ─── */
+	--shadow-glow: 0 0 20px rgba(0, 212, 170, 0.15);
+	--shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+}

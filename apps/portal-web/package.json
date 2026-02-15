@@ -1,0 +1,27 @@
+{
+  "name": "portal-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@subsidy-scope/api": "workspace:*",
+    "@subsidy-scope/db": "workspace:*",
+    "@subsidy-scope/ui": "workspace:*",
+    "next": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "motion": "^11.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:",
+    "tailwindcss": "catalog:",
+    "@tailwindcss/postcss": "catalog:"
+  }
+}

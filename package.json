@@ -1,0 +1,33 @@
+{
+  "name": "subsidy-scope",
+  "version": "0.1.0",
+  "description": "補助金スコープ — 日本の補助金情報を可視化・検索するオープンプラットフォーム",
+  "private": true,
+  "packageManager": "pnpm@10.4.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:portal": "pnpm --filter portal-web run dev",
+    "dev:subsidy": "pnpm --filter subsidy-web run dev",
+    "dev:analytics": "pnpm --filter analytics-web run dev",
+    "build": "turbo run build",
+    "lint": "biome check .",
+    "lint:fix": "biome check --fix .",
+    "format": "biome format --write .",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "db:generate": "pnpm --filter @subsidy-scope/db run generate",
+    "db:migrate": "pnpm --filter @subsidy-scope/db run migrate",
+    "db:push": "pnpm --filter @subsidy-scope/db run push",
+    "db:seed": "pnpm --filter @subsidy-scope/db run seed",
+    "db:reset": "pnpm --filter @subsidy-scope/db run reset",
+    "db:studio": "pnpm --filter @subsidy-scope/db run studio",
+    "ingest:subsidies": "pnpm --filter @subsidy-scope/ingestion run ingest:subsidies",
+    "ingest:stats": "pnpm --filter @subsidy-scope/ingestion run ingest:stats",
+    "ingest:all": "pnpm --filter @subsidy-scope/ingestion run ingest:all"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.9.0"
+  }
+}

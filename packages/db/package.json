@@ -1,0 +1,28 @@
+{
+  "name": "@subsidy-scope/db",
+  "version": "0.1.0",
+  "description": "SubsidyScope データベース — Prisma スキーマ・マイグレーション・シード",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "generate": "prisma generate",
+    "push": "prisma db push",
+    "migrate": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "seed": "tsx prisma/seed.ts",
+    "reset": "prisma migrate reset --force",
+    "studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.14.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.14.0",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

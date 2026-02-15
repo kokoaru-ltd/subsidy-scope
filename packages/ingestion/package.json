@@ -1,0 +1,21 @@
+{
+  "name": "@subsidy-scope/ingestion",
+  "version": "0.1.0",
+  "description": "SubsidyScope データ取り込みパイプライン — jGrants API クローラー",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "ingest:subsidies": "tsx src/jgrants/ingest-subsidies.ts",
+    "ingest:stats": "tsx src/stats/compute-stats.ts",
+    "ingest:all": "pnpm ingest:subsidies && pnpm ingest:stats",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@subsidy-scope/db": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,218 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ──────────────────── Core Subsidy Models ────────────────────
+
+model Subsidy {
+  id                        String           @id @default(cuid())
+  externalId                String           @unique
+  name                      String
+  title                     String
+  catchPhrase               String?
+  description               String?          @db.Text
+  usePurpose                String?          @db.Text
+
+  // Financial
+  subsidyMaxLimit           BigInt?
+  subsidyRate               String?
+
+  // Dates
+  acceptanceStartDatetime   DateTime?
+  acceptanceEndDatetime     DateTime?
+  projectEndDeadline        DateTime?
+
+  // Targeting
+  targetAreaSearch          String?
+  targetAreaDetail          String?          @db.Text
+  targetNumberOfEmployees   String?
+  industry                  String?
+
+  // Metadata
+  requestReceptionPresence  Boolean          @default(false)
+  isEnableMultipleRequest   Boolean          @default(false)
+  frontSubsidyDetailPageUrl String?
+  applicationGuidelines     String?          @db.Text
+  outlineOfGrant            String?          @db.Text
+  applicationForm           String?          @db.Text
+
+  // V2 extra fields
+  grantType                 String?
+  fiscalYear                Int?
+
+  // Classification
+  status                    SubsidyStatus    @default(ACTIVE)
+  ministry                  String?
+  categoryId                String?
+  category                  SubsidyCategory? @relation(fields: [categoryId], references: [id])
+
+  // Relations
+  regions                   SubsidyRegion[]
+  industries                SubsidyIndustry[]
+
+  // Timestamps
+  lastSyncedAt              DateTime         @default(now())
+  createdAt                 DateTime         @default(now())
+  updatedAt                 DateTime         @updatedAt
+
+  @@index([status, acceptanceEndDatetime])
+  @@index([subsidyMaxLimit])
+  @@index([acceptanceStartDatetime])
+  @@map("subsidies")
+}
+
+model SubsidyCategory {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  subsidies   Subsidy[]
+  createdAt   DateTime  @default(now())
+
+  @@map("subsidy_categories")
+}
+
+model Region {
+  id        String          @id @default(cuid())
+  name      String          @unique
+  code      String          @unique
+  area      RegionArea
+  subsidies SubsidyRegion[]
+  createdAt DateTime        @default(now())
+
+  @@map("regions")
+}
+
+model SubsidyRegion {
+  subsidyId String
+  regionId  String
+  subsidy   Subsidy @relation(fields: [subsidyId], references: [id], onDelete: Cascade)
+  region    Region  @relation(fields: [regionId], references: [id], onDelete: Cascade)
+
+  @@id([subsidyId, regionId])
+  @@map("subsidy_regions")
+}
+
+model Industry {
+  id        String            @id @default(cuid())
+  name      String            @unique
+  code      String            @unique
+  subsidies SubsidyIndustry[]
+  createdAt DateTime          @default(now())
+
+  @@map("industries")
+}
+
+model SubsidyIndustry {
+  subsidyId  String
+  industryId String
+  subsidy    Subsidy  @relation(fields: [subsidyId], references: [id], onDelete: Cascade)
+  industry   Industry @relation(fields: [industryId], references: [id], onDelete: Cascade)
+
+  @@id([subsidyId, industryId])
+  @@map("subsidy_industries")
+}
+
+// ──────────────────── Statistics ────────────────────
+
+model SubsidyStats {
+  id               String   @id @default(cuid())
+  date             DateTime @unique
+  totalCount       Int
+  activeCount      Int
+  totalMaxAmount   BigInt
+  averageMaxAmount BigInt?
+  byCategory       Json?
+  byRegion         Json?
+  byIndustry       Json?
+  createdAt        DateTime @default(now())
+
+  @@map("subsidy_stats")
+}
+
+// ──────────────────── Ingestion Tracking ────────────────────
+
+model IngestionRun {
+  id           String          @id @default(cuid())
+  source       String
+  status       IngestionStatus @default(RUNNING)
+  totalFetched Int             @default(0)
+  totalCreated Int             @default(0)
+  totalUpdated Int             @default(0)
+  totalErrors  Int             @default(0)
+  errorLog     Json?
+  startedAt    DateTime        @default(now())
+  completedAt  DateTime?
+
+  @@map("ingestion_runs")
+}
+
+// ──────────────────── SaaS / API Keys ────────────────────
+
+model ApiKey {
+  id          String      @id @default(cuid())
+  key         String      @unique
+  name        String
+  userId      String?
+  plan        PricingPlan @default(FREE)
+  dailyLimit  Int         @default(10)
+  usedToday   Int         @default(0)
+  lastResetAt DateTime    @default(now())
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("api_keys")
+}
+
+model SearchLog {
+  id          String   @id @default(cuid())
+  apiKeyId    String?
+  query       String
+  filters     Json?
+  resultCount Int
+  responseMs  Int
+  createdAt   DateTime @default(now())
+
+  @@map("search_logs")
+}
+
+// ──────────────────── Enums ────────────────────
+
+enum SubsidyStatus {
+  ACTIVE
+  UPCOMING
+  CLOSED
+  ARCHIVED
+}
+
+enum RegionArea {
+  HOKKAIDO
+  TOHOKU
+  KANTO
+  CHUBU
+  KINKI
+  CHUGOKU
+  SHIKOKU
+  KYUSHU
+  OKINAWA
+  NATIONWIDE
+}
+
+enum IngestionStatus {
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum PricingPlan {
+  FREE
+  PRO
+  ENTERPRISE
+}
