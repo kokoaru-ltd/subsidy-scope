@@ -7,7 +7,7 @@ const services = [
     title: "補助金検索",
     description:
       "AIが最適な補助金をレコメンド。キーワード・地域・業種から瞬時に検索し、申請要件を自動チェック。",
-    href: "http://localhost:3001",
+    href: "/search",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" />
@@ -21,7 +21,7 @@ const services = [
     title: "トレンド分析",
     description:
       "補助金の採択率・予算推移をグラフで可視化。地域別ヒートマップで全国の動向を一目で把握。",
-    href: "http://localhost:3002",
+    href: "/analytics",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 3v18h18" />

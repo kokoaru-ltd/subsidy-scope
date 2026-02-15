@@ -78,7 +78,7 @@ export default function PricingPage() {
               クレジットカード不要。30秒で登録完了。
             </p>
             <a
-              href="http://localhost:3001"
+              href="/search"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-[#0a0e17] font-semibold text-base hover:bg-[var(--accent-dim)] transition-colors"
             >
               無料で始める
@@ -104,10 +104,10 @@ export default function PricingPage() {
             </div>
 
             <div className="flex items-center gap-6 text-sm text-[var(--text-secondary)]">
-              <a href="http://localhost:3001" className="hover:text-[var(--text-primary)] transition-colors">
+              <a href="/search" className="hover:text-[var(--text-primary)] transition-colors">
                 補助金検索
               </a>
-              <a href="http://localhost:3002" className="hover:text-[var(--text-primary)] transition-colors">
+              <a href="/analytics" className="hover:text-[var(--text-primary)] transition-colors">
                 トレンド
               </a>
               <a href="/pricing" className="hover:text-[var(--text-primary)] transition-colors">

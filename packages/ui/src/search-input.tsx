@@ -16,7 +16,7 @@ export function SearchInput({
 	debounceMs = 300,
 }: SearchInputProps) {
 	const [value, setValue] = useState(initialValue);
-	const timerRef = useRef<ReturnType<typeof setTimeout>>();
+	const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
 	const handleChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {

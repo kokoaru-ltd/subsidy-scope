@@ -5,10 +5,7 @@
   "private": true,
   "packageManager": "pnpm@10.4.0",
   "scripts": {
-    "dev": "turbo run dev",
-    "dev:portal": "pnpm --filter portal-web run dev",
-    "dev:subsidy": "pnpm --filter subsidy-web run dev",
-    "dev:analytics": "pnpm --filter analytics-web run dev",
+    "dev": "pnpm --filter portal-web run dev",
     "build": "turbo run build",
     "lint": "biome check .",
     "lint:fix": "biome check --fix .",

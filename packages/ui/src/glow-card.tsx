@@ -1,17 +1,18 @@
 "use client";
 
 import { motion } from "motion/react";
-import type { HTMLAttributes } from "react";
+import type { ReactNode } from "react";
 
-interface GlowCardProps extends HTMLAttributes<HTMLDivElement> {
+interface GlowCardProps {
 	glowColor?: string;
+	className?: string;
+	children?: ReactNode;
 }
 
 export function GlowCard({
 	glowColor = "rgba(0, 212, 170, 0.35)",
 	className = "",
 	children,
-	...props
 }: GlowCardProps) {
 	return (
 		<motion.div
@@ -21,7 +22,6 @@ export function GlowCard({
 			style={{
 				boxShadow: `0 4px 24px rgba(0,0,0,0.3)`,
 			}}
-			{...props}
 		>
 			<div
 				className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"

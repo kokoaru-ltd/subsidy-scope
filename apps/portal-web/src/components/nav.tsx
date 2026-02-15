@@ -3,8 +3,8 @@
 import { NavigationBar } from "@subsidy-scope/ui";
 
 const navItems = [
-  { label: "補助金検索", href: "http://localhost:3001" },
-  { label: "トレンド", href: "http://localhost:3002" },
+  { label: "補助金検索", href: "/search" },
+  { label: "トレンド", href: "/analytics" },
   { label: "API", href: "#api" },
   { label: "料金プラン", href: "/pricing" },
 ];

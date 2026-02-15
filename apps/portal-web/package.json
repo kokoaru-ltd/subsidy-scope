@@ -15,7 +15,8 @@
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "motion": "^11.15.0"
+    "motion": "^11.15.0",
+    "recharts": "catalog:"
   },
   "devDependencies": {
     "@types/react": "catalog:",

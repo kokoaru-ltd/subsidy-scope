@@ -6,7 +6,7 @@ export function HeroButtons() {
   return (
     <FadeIn delay={0.8}>
       <div className="flex flex-col sm:flex-row gap-4 mt-10">
-        <a href="http://localhost:3001">
+        <a href="/search">
           <Button size="lg" variant="primary">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
               <circle cx="11" cy="11" r="8" />
@@ -15,7 +15,7 @@ export function HeroButtons() {
             補助金を検索する
           </Button>
         </a>
-        <a href="http://localhost:3002">
+        <a href="/analytics">
           <Button size="lg" variant="outline">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
               <path d="M3 3v18h18" />

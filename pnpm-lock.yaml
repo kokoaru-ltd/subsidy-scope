@@ -51,7 +51,7 @@ importers:
         specifier: ^5.9.0
         version: 5.9.3
 
-  apps/analytics-web:
+  apps/portal-web:
     dependencies:
       '@subsidy-scope/api':
         specifier: workspace:*
@@ -77,86 +77,6 @@ importers:
       recharts:
         specifier: 'catalog:'
         version: 2.15.4(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-    devDependencies:
-      '@tailwindcss/postcss':
-        specifier: 'catalog:'
-        version: 4.1.18
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.14
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.2.3(@types/react@19.2.14)
-      tailwindcss:
-        specifier: 'catalog:'
-        version: 4.1.18
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-
-  apps/portal-web:
-    dependencies:
-      '@subsidy-scope/api':
-        specifier: workspace:*
-        version: link:../../packages/api
-      '@subsidy-scope/db':
-        specifier: workspace:*
-        version: link:../../packages/db
-      '@subsidy-scope/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      motion:
-        specifier: ^11.15.0
-        version: 11.18.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      next:
-        specifier: 'catalog:'
-        version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      react:
-        specifier: 'catalog:'
-        version: 19.2.4
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.4(react@19.2.4)
-    devDependencies:
-      '@tailwindcss/postcss':
-        specifier: 'catalog:'
-        version: 4.1.18
-      '@types/react':
-        specifier: 'catalog:'
-        version: 19.2.14
-      '@types/react-dom':
-        specifier: 'catalog:'
-        version: 19.2.3(@types/react@19.2.14)
-      tailwindcss:
-        specifier: 'catalog:'
-        version: 4.1.18
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-
-  apps/subsidy-web:
-    dependencies:
-      '@subsidy-scope/api':
-        specifier: workspace:*
-        version: link:../../packages/api
-      '@subsidy-scope/db':
-        specifier: workspace:*
-        version: link:../../packages/db
-      '@subsidy-scope/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      motion:
-        specifier: ^11.15.0
-        version: 11.18.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      next:
-        specifier: 'catalog:'
-        version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      react:
-        specifier: 'catalog:'
-        version: 19.2.4
-      react-dom:
-        specifier: 'catalog:'
-        version: 19.2.4(react@19.2.4)
     devDependencies:
       '@tailwindcss/postcss':
         specifier: 'catalog:'

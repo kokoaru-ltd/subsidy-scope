@@ -1,16 +1,17 @@
 "use client";
 
-import { type ButtonHTMLAttributes, forwardRef } from "react";
-import { motion } from "motion/react";
+import { type ReactNode, forwardRef } from "react";
+import { type HTMLMotionProps, motion } from "motion/react";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
 	variant?: ButtonVariant;
 	size?: ButtonSize;
 	loading?: boolean;
-	icon?: React.ReactNode;
+	icon?: ReactNode;
+	children?: ReactNode;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
