@@ -5,7 +5,7 @@ import { Button, FadeIn } from "@subsidy-scope/ui";
 export function HeroButtons() {
   return (
     <FadeIn delay={0.8}>
-      <div className="flex flex-col sm:flex-row gap-4 mt-10">
+      <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center">
         <a href="/search">
           <Button size="lg" variant="primary">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">

@@ -290,7 +290,7 @@ export default function SearchPage() {
 	return (
 		<>
 			<Nav />
-			<div className="h-16" />
+			<div className="h-20" />
 			<Suspense fallback={<SearchLoading />}>
 				<SearchContent />
 			</Suspense>

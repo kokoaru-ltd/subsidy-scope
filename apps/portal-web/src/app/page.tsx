@@ -10,7 +10,7 @@ export default function Home() {
       <Nav />
 
       {/* Hero */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-16">
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
         <div className="max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--accent-subtle)] text-sm text-[var(--accent)] mb-8">
             <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />

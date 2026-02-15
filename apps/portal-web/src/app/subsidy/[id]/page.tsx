@@ -12,7 +12,11 @@ import {
 } from "@subsidy-scope/ui";
 import { Nav } from "@/components/nav";
 import { formatYen, formatDateJP, daysUntil } from "@/lib/format";
-import { getSubsidyById, getRelatedSubsidies } from "@/lib/mock-data";
+import { getSubsidyById, getRelatedSubsidies, mockSubsidies } from "@/lib/mock-data";
+
+export function generateStaticParams() {
+	return mockSubsidies.map((s) => ({ id: s.id }));
+}
 
 const statusVariant: Record<
 	string,
@@ -49,7 +53,7 @@ export default async function SubsidyDetailPage({
 	return (
 		<>
 			<Nav />
-			<div className="h-16" />
+			<div className="h-20" />
 			<div className="min-h-screen max-w-5xl mx-auto px-6 py-8">
 				<FadeIn>
 					<nav className="flex items-center gap-2 text-sm text-[var(--text-dim)] mb-6">
