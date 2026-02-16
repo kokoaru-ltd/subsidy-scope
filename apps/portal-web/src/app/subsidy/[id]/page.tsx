@@ -130,6 +130,16 @@ export default async function SubsidyDetailPage({
 							</div>
 
 							<div className="space-y-4">
+								{subsidy.subsidyRate && (
+									<div>
+										<dt className="text-xs text-[var(--text-dim)] uppercase tracking-wider mb-1">
+											補助率
+										</dt>
+										<dd className="text-sm text-[var(--text-primary)] font-medium">
+											{subsidy.subsidyRate}
+										</dd>
+									</div>
+								)}
 								<div>
 									<dt className="text-xs text-[var(--text-dim)] uppercase tracking-wider mb-1">
 										カテゴリ
@@ -169,7 +179,7 @@ export default async function SubsidyDetailPage({
 
 						<div className="flex flex-wrap gap-3">
 							<a
-								href="https://www.jgrants-portal.go.jp/subsidies"
+								href={subsidy.url}
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -219,6 +229,7 @@ export default async function SubsidyDetailPage({
 										regions={s.regions}
 										category={s.category}
 										href={`/subsidy/${s.id}`}
+										url={s.url}
 									/>
 								</StaggerItem>
 							))}

@@ -13,6 +13,7 @@ interface SubsidyCardProps {
 	regions?: string[];
 	category?: string;
 	href?: string;
+	url?: string;
 }
 
 function formatYen(amount: number | null): string {
@@ -45,6 +46,7 @@ export function SubsidyCard({
 	regions = [],
 	category,
 	href,
+	url,
 }: SubsidyCardProps) {
 	const Wrapper = href ? "a" : "div";
 
@@ -70,7 +72,7 @@ export function SubsidyCard({
 				</div>
 
 				{regions.length > 0 && (
-					<div className="flex gap-1 flex-wrap mt-auto">
+					<div className="flex gap-1 flex-wrap">
 						{regions.slice(0, 3).map((r) => (
 							<span
 								key={r}
@@ -82,6 +84,22 @@ export function SubsidyCard({
 						{regions.length > 3 && (
 							<span className="text-xs text-[var(--text-dim)]">+{regions.length - 3}</span>
 						)}
+					</div>
+				)}
+
+				{url && (
+					<div className="mt-auto pt-2 border-t border-[var(--glass-border)]">
+						<span
+							className="inline-flex items-center gap-1 text-xs text-[var(--accent)] hover:underline"
+							onClick={(e) => e.stopPropagation()}
+						>
+							<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+								<polyline points="15 3 21 3 21 9" />
+								<line x1="10" y1="14" x2="21" y2="3" />
+							</svg>
+							jGrants
+						</span>
 					</div>
 				)}
 			</GlowCard>

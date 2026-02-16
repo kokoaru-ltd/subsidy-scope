@@ -230,6 +230,7 @@ function SearchContent() {
 										regions={subsidy.regions}
 										category={subsidy.category}
 										href={`/subsidy/${subsidy.id}`}
+										url={subsidy.url}
 									/>
 								</StaggerItem>
 							))}
