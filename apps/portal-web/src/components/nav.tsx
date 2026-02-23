@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { NavigationBar } from "@subsidy-scope/ui";
 
 const navItems = [
@@ -11,5 +12,5 @@ const navItems = [
 ];
 
 export function Nav() {
-  return <NavigationBar brand="SUBSIDY SCOPE" items={navItems} />;
+  return <NavigationBar brand="SUBSIDY SCOPE" items={navItems} linkComponent={Link} />;
 }

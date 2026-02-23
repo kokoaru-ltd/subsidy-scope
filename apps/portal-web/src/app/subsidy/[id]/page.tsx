@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
 	Card,
@@ -57,19 +58,19 @@ export default async function SubsidyDetailPage({
 			<div className="min-h-screen max-w-5xl mx-auto px-6 py-8">
 				<FadeIn>
 					<nav className="flex items-center gap-2 text-sm text-[var(--text-dim)] mb-6">
-						<a
+						<Link
 							href="/"
 							className="hover:text-[var(--text-secondary)] transition-colors"
 						>
 							ホーム
-						</a>
+						</Link>
 						<span>/</span>
-						<a
+						<Link
 							href="/search"
 							className="hover:text-[var(--text-secondary)] transition-colors"
 						>
 							検索
-						</a>
+						</Link>
 						<span>/</span>
 						<span className="text-[var(--text-secondary)] truncate max-w-[200px]">
 							{subsidy.title}
@@ -203,11 +204,11 @@ export default async function SubsidyDetailPage({
 									</svg>
 								</Button>
 							</a>
-							<a href="/search">
+							<Link href="/search">
 								<Button variant="secondary" size="lg">
 									検索に戻る
 								</Button>
-							</a>
+							</Link>
 						</div>
 					</Card>
 				</FadeIn>
@@ -229,6 +230,7 @@ export default async function SubsidyDetailPage({
 										regions={s.regions}
 										category={s.category}
 										href={`/subsidy/${s.id}`}
+									linkComponent={Link}
 										url={s.url}
 									/>
 								</StaggerItem>

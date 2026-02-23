@@ -16,6 +16,7 @@ interface SubsidyCardProps {
 	category?: string;
 	href?: string;
 	url?: string;
+	linkComponent?: React.ElementType;
 }
 
 function formatYen(amount: number | null): string {
@@ -51,8 +52,9 @@ export function SubsidyCard({
 	category,
 	href,
 	url,
+	linkComponent,
 }: SubsidyCardProps) {
-	const Wrapper = href ? "a" : "div";
+	const Wrapper = href ? (linkComponent || "a") : "div";
 
 	return (
 		<Wrapper href={href}>

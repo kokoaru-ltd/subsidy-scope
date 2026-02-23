@@ -12,15 +12,16 @@ interface NavigationBarProps {
 	brand: string;
 	items: NavItem[];
 	currentPath?: string;
+	linkComponent?: React.ElementType;
 }
 
-export function NavigationBar({ brand, items, currentPath }: NavigationBarProps) {
+export function NavigationBar({ brand, items, currentPath, linkComponent: LinkComp = "a" }: NavigationBarProps) {
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	return (
 		<nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--border)] bg-[rgba(10,14,23,0.8)] backdrop-blur-2xl">
 			<div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-				<a href="/" className="flex items-center gap-3">
+				<LinkComp href="/" className="flex items-center gap-3">
 					<div className="w-9 h-9 rounded-lg bg-[var(--accent)] flex items-center justify-center">
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a0e17" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
 							<circle cx="11" cy="11" r="8" />
@@ -30,12 +31,12 @@ export function NavigationBar({ brand, items, currentPath }: NavigationBarProps)
 					<span className="text-2xl font-extrabold text-white tracking-tight">
 						{brand}
 					</span>
-				</a>
+				</LinkComp>
 
 				{/* Desktop */}
 				<div className="hidden md:flex items-center gap-2">
 					{items.map((item) => (
-						<a
+						<LinkComp
 							key={item.href}
 							href={item.href}
 							className={`px-4 py-2.5 rounded-lg text-base font-medium transition-colors ${
@@ -45,7 +46,7 @@ export function NavigationBar({ brand, items, currentPath }: NavigationBarProps)
 							}`}
 						>
 							{item.label}
-						</a>
+						</LinkComp>
 					))}
 				</div>
 
@@ -77,13 +78,13 @@ export function NavigationBar({ brand, items, currentPath }: NavigationBarProps)
 					>
 						<div className="px-8 py-6 flex flex-col gap-2">
 							{items.map((item) => (
-								<a
+								<LinkComp
 									key={item.href}
 									href={item.href}
 									className="px-4 py-3 rounded-lg text-base font-medium text-[var(--text-secondary)] hover:text-white hover:bg-[rgba(255,255,255,0.08)]"
 								>
 									{item.label}
-								</a>
+								</LinkComp>
 							))}
 						</div>
 					</motion.div>

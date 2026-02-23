@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { HeroTitle } from "@/components/hero-title";
 import { HeroButtons } from "@/components/hero-buttons";
@@ -60,12 +61,12 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-6 text-sm text-[var(--text-secondary)]">
-              <a href="/search" className="hover:text-[var(--text-primary)] transition-colors">
+              <Link href="/search" className="hover:text-[var(--text-primary)] transition-colors">
                 補助金検索
-              </a>
-              <a href="/analytics" className="hover:text-[var(--text-primary)] transition-colors">
+              </Link>
+              <Link href="/analytics" className="hover:text-[var(--text-primary)] transition-colors">
                 トレンド
-              </a>
+              </Link>
               <a href="https://github.com/kokoaru-ltd/subsidy-scope" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text-primary)] transition-colors">
                 GitHub
               </a>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useMemo, useState } from "react";
 import {
@@ -232,6 +233,7 @@ function SearchContent() {
 										regions={subsidy.regions}
 										category={subsidy.category}
 										href={`/subsidy/${subsidy.id}`}
+										linkComponent={Link}
 										url={subsidy.url}
 									/>
 								</StaggerItem>
