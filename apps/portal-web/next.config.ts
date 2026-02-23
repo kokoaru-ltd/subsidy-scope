@@ -4,6 +4,7 @@ const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
 
 const config: NextConfig = {
   output: "export",
+  trailingSlash: true,
   basePath: isGitHubPages ? "/subsidy-scope" : "",
   assetPrefix: isGitHubPages ? "/subsidy-scope/" : "",
   transpilePackages: ["@subsidy-scope/ui", "@subsidy-scope/api", "@subsidy-scope/db"],
