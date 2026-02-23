@@ -40,7 +40,7 @@ export function DeadlineBadge({ deadline }: DeadlineBadgeProps) {
 	}
 
 	return (
-		<span className="inline-flex items-center px-2 py-0.5 text-xs rounded-full bg-[rgba(0,212,170,0.1)] text-[var(--status-active)] border border-[rgba(0,212,170,0.2)]">
+		<span className="inline-flex items-center px-2 py-0.5 text-xs rounded-full bg-[rgba(59,130,246,0.1)] text-[var(--status-active)] border border-[rgba(59,130,246,0.2)]">
 			残り{days}日
 		</span>
 	);

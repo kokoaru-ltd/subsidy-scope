@@ -61,7 +61,7 @@ export function SubsidyCard({
 				<div className="flex items-center gap-2 flex-wrap">
 					<Badge variant={statusVariant[status]}>{statusLabel[status]}</Badge>
 					{category && <Badge>{category}</Badge>}
-					{regions.length > 0 && regions.map((r) => (
+					{regions.length > 0 && regions.slice(0, 3).map((r) => (
 						<span
 							key={r}
 							className="text-xs px-2 py-0.5 rounded bg-[var(--glass-bg)] text-[var(--text-dim)] border border-[var(--glass-border)]"
@@ -69,6 +69,11 @@ export function SubsidyCard({
 							{r}
 						</span>
 					))}
+					{regions.length > 3 && (
+						<span className="text-xs text-[var(--text-dim)]">
+							+{regions.length - 3}
+						</span>
+					)}
 				</div>
 
 				{/* Title */}
@@ -84,12 +89,12 @@ export function SubsidyCard({
 				)}
 
 				{/* Amount + Rate */}
-				<div className="flex items-baseline gap-3">
-					<span className="text-2xl font-bold text-[var(--accent)]">
+				<div className="flex items-baseline gap-3 min-w-0">
+					<span className="text-2xl font-bold text-[var(--accent)] shrink-0">
 						{formatYen(subsidyMaxLimit)}
 					</span>
 					{subsidyRate && (
-						<span className="text-xs text-[var(--text-dim)] bg-[var(--glass-bg)] px-2 py-1 rounded border border-[var(--glass-border)]">
+						<span className="text-xs text-[var(--text-dim)] bg-[var(--glass-bg)] px-2 py-1 rounded border border-[var(--glass-border)] truncate max-w-[180px]">
 							補助率 {subsidyRate}
 						</span>
 					)}

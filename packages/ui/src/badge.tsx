@@ -8,7 +8,7 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 const variantStyles: Record<BadgeVariant, string> = {
 	default: "bg-[var(--glass-bg)] text-[var(--text-secondary)] border-[var(--glass-border)]",
-	active: "bg-[rgba(0,212,170,0.1)] text-[var(--status-active)] border-[rgba(0,212,170,0.2)]",
+	active: "bg-[rgba(59,130,246,0.1)] text-[var(--status-active)] border-[rgba(59,130,246,0.2)]",
 	upcoming: "bg-[rgba(251,191,36,0.1)] text-[var(--status-upcoming)] border-[rgba(251,191,36,0.2)]",
 	closed: "bg-[rgba(239,68,68,0.1)] text-[var(--status-closed)] border-[rgba(239,68,68,0.2)]",
 	archived: "bg-[rgba(107,114,128,0.1)] text-[var(--status-archived)] border-[rgba(107,114,128,0.2)]",

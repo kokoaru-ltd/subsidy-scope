@@ -88,7 +88,7 @@ export function TrendChart() {
 						activeDot={{
 							r: 6,
 							fill: chartTheme.accent,
-							stroke: "rgba(0,212,170,0.3)",
+							stroke: "rgba(59,130,246,0.3)",
 							strokeWidth: 8,
 						}}
 					/>
