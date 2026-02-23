@@ -1,32 +1,56 @@
 # SubsidyScope — 補助金を、すべての企業に
 
-日本全国の補助金・助成金情報をリアルタイムで可視化・検索するオープンプラットフォーム。
+日本全国の補助金・助成金情報を検索・可視化するオープンソースプラットフォーム。完全無料。
 
-## アプリケーション構成
+## 機能
 
-| アプリ | ポート | 説明 |
-|--------|--------|------|
-| **portal-web** | :3000 | ランディングページ + 統合ダッシュボード |
-| **subsidy-web** | :3001 | 補助金検索・閲覧 |
-| **analytics-web** | :3002 | トレンド分析・統計可視化 |
+- **補助金検索** — jGrants API から取得した補助金をキーワード・地域・業種・ステータスで絞り込み検索
+- **トレンド分析** — 件数推移・総額・地域別分布をグラフで可視化
+- **サイトまとめ** — 国・省庁・自治体・民間の補助金ポータルサイト 46件以上を横断リスト化
 
-## 共有パッケージ
+## デモ
 
-| パッケージ | 説明 |
-|-----------|------|
-| `@subsidy-scope/ui` | デザインシステム（20+ コンポーネント） |
-| `@subsidy-scope/db` | Prisma スキーマ・マイグレーション |
-| `@subsidy-scope/api` | API ユーティリティ |
-| `@subsidy-scope/ingestion` | jGrants API データ取込パイプライン |
+https://kokoaru-ltd.github.io/subsidy-scope/
 
 ## 技術スタック
 
-- **Frontend**: Next.js 15 + React 19 + TypeScript
-- **Styling**: Tailwind CSS v4 + Motion v11 + Lenis
-- **Database**: PostgreSQL + Prisma 6
-- **Charts**: Recharts
-- **Monorepo**: pnpm 10 + Turborepo
-- **Lint**: Biome 2.3
+| カテゴリ | 技術 |
+|---------|------|
+| フレームワーク | Next.js 15 (App Router) + React 19 |
+| 言語 | TypeScript 5.9 |
+| スタイリング | Tailwind CSS v4 |
+| アニメーション | Motion v11 + Lenis (スムーススクロール) |
+| チャート | Recharts |
+| DB | PostgreSQL + Prisma 6 |
+| モノレポ | pnpm 10 + Turborepo |
+| Lint/Format | Biome 2.3 |
+| デプロイ | GitHub Pages (静的エクスポート) |
+
+## プロジェクト構成
+
+```
+subsidy-scope/
+├── apps/
+│   └── portal-web/          # メインアプリ (Next.js)
+│       └── src/
+│           ├── app/
+│           │   ├── page.tsx          # トップページ
+│           │   ├── search/           # 補助金検索
+│           │   ├── analytics/        # トレンド分析
+│           │   ├── portals/          # サイトまとめ
+│           │   └── subsidy/[id]/     # 補助金詳細
+│           ├── components/           # ページ固有コンポーネント
+│           └── lib/                  # データ・ユーティリティ
+├── packages/
+│   ├── ui/              # @subsidy-scope/ui デザインシステム
+│   ├── db/              # @subsidy-scope/db Prismaスキーマ
+│   ├── api/             # @subsidy-scope/api ユーティリティ
+│   └── ingestion/       # @subsidy-scope/ingestion データ取込
+├── .github/workflows/   # CI/CD (GitHub Pages デプロイ)
+├── pnpm-workspace.yaml
+├── turbo.json
+└── biome.json
+```
 
 ## セットアップ
 
@@ -34,28 +58,43 @@
 # 依存関係インストール
 pnpm install
 
-# データベース起動
+# 開発サーバー起動
+pnpm dev
+# → http://localhost:3000
+```
+
+### データベースを使う場合（オプション）
+
+```bash
+# PostgreSQL起動
 docker compose up -d
 
-# Prisma クライアント生成
+# Prismaクライアント生成 + マイグレーション + シードデータ
 pnpm db:generate
-
-# マイグレーション実行
 pnpm db:migrate
-
-# シードデータ投入
 pnpm db:seed
 
-# データ取込（jGrants API）
+# jGrants APIからデータ取込
 pnpm ingest:all
-
-# 開発サーバー起動（全アプリ）
-pnpm dev
 ```
+
+## ビルド・デプロイ
+
+```bash
+# 静的サイトとしてビルド（GitHub Pages用）
+pnpm build
+# → apps/portal-web/out/ に出力
+```
+
+GitHub Pages へのデプロイは `.github/workflows/deploy.yml` で自動化済み。
+`main` ブランチへのプッシュで自動デプロイされる。
 
 ## データソース
 
-- [jGrants API](https://developers.digital.go.jp/documents/jgrants/api/) — デジタル庁運営の補助金ポータル
+| ソース | 種別 | 内容 |
+|--------|------|------|
+| [jGrants API](https://api.jgrants-portal.go.jp/) | REST API | 国の補助金データ（デジタル庁運営） |
+| 各省庁・自治体公式サイト | リンク集 | 46サイト以上を `/portals` に収録 |
 
 ## ライセンス
 
