@@ -218,13 +218,15 @@ function SearchContent() {
 					</div>
 
 					{results.data.length > 0 ? (
-						<StaggerGrid className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+						<StaggerGrid className="grid grid-cols-1 xl:grid-cols-2 gap-5">
 							{results.data.map((subsidy) => (
 								<StaggerItem key={subsidy.id}>
 									<SubsidyCard
 										id={subsidy.id}
 										title={subsidy.title}
+										description={subsidy.description}
 										subsidyMaxLimit={subsidy.subsidyMaxLimit}
+										subsidyRate={subsidy.subsidyRate}
 										acceptanceEndDatetime={subsidy.acceptanceEndDatetime}
 										status={subsidy.status}
 										regions={subsidy.regions}

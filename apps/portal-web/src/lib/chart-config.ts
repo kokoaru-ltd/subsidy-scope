@@ -2,10 +2,10 @@ export const chartTheme = {
 	background: "transparent",
 	textColor: "#8b95a5",
 	gridColor: "rgba(255, 255, 255, 0.06)",
-	accent: "#00d4aa",
+	accent: "#3b82f6",
 	colors: [
-		"#00d4aa",
 		"#3b82f6",
+		"#60a5fa",
 		"#f59e0b",
 		"#ef4444",
 		"#8b5cf6",

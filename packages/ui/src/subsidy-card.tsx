@@ -7,7 +7,9 @@ import { DeadlineBadge } from "./deadline-badge";
 interface SubsidyCardProps {
 	id: string;
 	title: string;
+	description?: string;
 	subsidyMaxLimit: number | null;
+	subsidyRate?: string | null;
 	acceptanceEndDatetime: string | null;
 	status: "ACTIVE" | "UPCOMING" | "CLOSED" | "ARCHIVED";
 	regions?: string[];
@@ -40,7 +42,9 @@ const statusLabel: Record<string, string> = {
 export function SubsidyCard({
 	id,
 	title,
+	description,
 	subsidyMaxLimit,
+	subsidyRate,
 	acceptanceEndDatetime,
 	status,
 	regions = [],
@@ -52,45 +56,55 @@ export function SubsidyCard({
 
 	return (
 		<Wrapper href={href}>
-			<GlowCard className="h-full flex flex-col gap-3 cursor-pointer">
-				<div className="flex items-start justify-between gap-2">
-					<h3 className="text-sm font-medium text-[var(--text-primary)] line-clamp-2 flex-1">
-						{title}
-					</h3>
-					<Badge variant={statusVariant[status]}>{statusLabel[status]}</Badge>
-				</div>
-
-				<div className="text-2xl font-bold text-[var(--accent)]">
-					{formatYen(subsidyMaxLimit)}
-				</div>
-
+			<GlowCard className="h-full flex flex-col gap-4 cursor-pointer">
+				{/* Header: status + category */}
 				<div className="flex items-center gap-2 flex-wrap">
-					<DeadlineBadge deadline={acceptanceEndDatetime} />
-					{category && (
-						<Badge>{category}</Badge>
+					<Badge variant={statusVariant[status]}>{statusLabel[status]}</Badge>
+					{category && <Badge>{category}</Badge>}
+					{regions.length > 0 && regions.map((r) => (
+						<span
+							key={r}
+							className="text-xs px-2 py-0.5 rounded bg-[var(--glass-bg)] text-[var(--text-dim)] border border-[var(--glass-border)]"
+						>
+							{r}
+						</span>
+					))}
+				</div>
+
+				{/* Title */}
+				<h3 className="text-base font-semibold text-[var(--text-primary)] leading-snug line-clamp-3">
+					{title}
+				</h3>
+
+				{/* Description */}
+				{description && (
+					<p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">
+						{description}
+					</p>
+				)}
+
+				{/* Amount + Rate */}
+				<div className="flex items-baseline gap-3">
+					<span className="text-2xl font-bold text-[var(--accent)]">
+						{formatYen(subsidyMaxLimit)}
+					</span>
+					{subsidyRate && (
+						<span className="text-xs text-[var(--text-dim)] bg-[var(--glass-bg)] px-2 py-1 rounded border border-[var(--glass-border)]">
+							補助率 {subsidyRate}
+						</span>
 					)}
 				</div>
 
-				{regions.length > 0 && (
-					<div className="flex gap-1 flex-wrap">
-						{regions.slice(0, 3).map((r) => (
-							<span
-								key={r}
-								className="text-xs px-2 py-0.5 rounded bg-[var(--glass-bg)] text-[var(--text-dim)] border border-[var(--glass-border)]"
-							>
-								{r}
-							</span>
-						))}
-						{regions.length > 3 && (
-							<span className="text-xs text-[var(--text-dim)]">+{regions.length - 3}</span>
-						)}
-					</div>
-				)}
+				{/* Deadline */}
+				<div>
+					<DeadlineBadge deadline={acceptanceEndDatetime} />
+				</div>
 
+				{/* Footer: link */}
 				{url && (
-					<div className="mt-auto pt-2 border-t border-[var(--glass-border)]">
+					<div className="mt-auto pt-3 border-t border-[var(--glass-border)]">
 						<span
-							className="inline-flex items-center gap-1 text-xs text-[var(--accent)] hover:underline"
+							className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent)] hover:underline"
 							onClick={(e) => e.stopPropagation()}
 						>
 							<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -98,7 +112,7 @@ export function SubsidyCard({
 								<polyline points="15 3 21 3 21 9" />
 								<line x1="10" y1="14" x2="21" y2="3" />
 							</svg>
-							jGrants
+							公式サイトで詳細を見る
 						</span>
 					</div>
 				)}

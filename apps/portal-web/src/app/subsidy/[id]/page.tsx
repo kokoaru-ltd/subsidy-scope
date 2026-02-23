@@ -184,7 +184,7 @@ export default async function SubsidyDetailPage({
 								rel="noopener noreferrer"
 							>
 								<Button size="lg">
-									jGrantsで詳細を見る
+									公式サイトで詳細を見る
 									<svg
 										width="16"
 										height="16"

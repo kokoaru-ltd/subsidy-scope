@@ -15,7 +15,7 @@ const services = [
         <path d="M11 8v6M8 11h6" />
       </svg>
     ),
-    glowColor: "rgba(0, 212, 170, 0.35)",
+    glowColor: "rgba(59, 130, 246, 0.35)",
   },
   {
     title: "トレンド分析",
@@ -33,7 +33,7 @@ const services = [
   {
     title: "オープンソース",
     description:
-      "コード全公開。誰でも自由に利用・改善できます。データソースはjGrants公開APIを使用。",
+      "コード全公開。誰でも自由に利用・改善できます。国・自治体の補助金情報を横断的に収集。",
     href: "https://github.com/kokoaru-ltd/subsidy-scope",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
